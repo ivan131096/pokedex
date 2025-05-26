@@ -3,12 +3,10 @@
     <div class="flex flex-col items-center">
       <span class="text-amber-600 text-sm">{{item.name.charAt(0).toUpperCase()+item.name.slice(1)}}</span>
       <p-image src="{{item.sprites.front_default}}" id="imagem"></p-image>
-      <p-image src="{{item.sprites.front_female}}" id="imagem"></p-image>
-      <p-image src="{{item.sprites.front_shiny}}" id="imagem"></p-image>
-
       @for (type of item.types; track type){
         <span class="text-amber-300 text-sm">{{type.type.name.charAt(0).toUpperCase()+type.type.name.slice(1)}}</span>
       }
+      <span>{{item.order}}</span>
       <p-button (onClick)="playAudio(item.cries.latest)" icon="pi pi-volume-up" [rounded]="true" [text]="true" severity="danger"></p-button>
     </div>
   }
@@ -16,29 +14,3 @@
 <div class="flex justify-center">
   <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[10, 20, 30]" />
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-<div class="grid grid-cols-6 gap-10 mt-3.5">
-  @for (item of list; track item){
-    <div class="flex flex-col items-center">
-      <span class="text-amber-600 text-sm">{{item.name.charAt(0).toUpperCase()+item.name.slice(1)}}</span>
-      <p-image src="{{item.sprites.front_default}}"></p-image>
-      @for (type of item.types; track type){
-        <span class="text-amber-300 text-sm">{{type.type.name.charAt(0).toUpperCase()+type.type.name.slice(1)}}</span>
-      }
-    </div>
-  }
-</div>
--->
