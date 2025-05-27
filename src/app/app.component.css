@@ -1,0 +1,47 @@
+::ng-deep .p-paginator{
+  background-color: rgb(251 191 36);
+}
+
+::ng-deep .p-ripple{
+  color: crimson !important;
+  font-weight: bolder !important;
+}
+
+::ng-deep .p-paginator-page-selected{
+  background-color: orange !important;
+}
+
+::ng-deep .p-ripple:hover{
+  background-color: orange !important;
+}
+
+::ng-deep .p-select{
+  background-color: darkorange !important;
+  border-color: crimson;
+}
+
+::ng-deep .p-select-label{
+  color: crimson !important;
+  font-weight: bolder !important;
+}
+
+::ng-deep .p-icon{
+  color: crimson !important;
+}
+
+::ng-deep .p-select-list{
+  background-color: darkorange !important;
+}
+
+::ng-deep .p-paginator-rpp-dropdown{
+  --p-select-focus-border-color: crimson;
+}
+
+::ng-deep .p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus{
+  --p-select-option-focus-background: darkorange !important;
+}
+
+
+
+
+

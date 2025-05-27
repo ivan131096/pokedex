@@ -1,16 +1,33 @@
-<div class="grid grid-cols-6 gap-10 mt-3.5">
-  @for (item of list; track item){
-    <div class="flex flex-col items-center">
-      <span class="text-amber-600 text-sm">{{item.name.charAt(0).toUpperCase()+item.name.slice(1)}}</span>
-      <p-image src="{{item.sprites.front_default}}" id="imagem"></p-image>
-      @for (type of item.types; track type){
-        <span class="text-amber-300 text-sm">{{type.type.name.charAt(0).toUpperCase()+type.type.name.slice(1)}}</span>
-      }
-      <span>{{item.order}}</span>
-      <p-button (onClick)="playAudio(item.cries.latest)" icon="pi pi-volume-up" [rounded]="true" [text]="true" severity="danger"></p-button>
+<div class="flex flex-col justify-between gap-8 h-full">
+  <!-- Header -->
+  <section class="bg-amber-400 w-full min-h-20 flex flex-row items-center p-2 justify-between">
+    <div class="flex flex-row items-center gap-2">
+      <p-image src="./logo.png" ></p-image>
+      <div>
+        <span class="text-black font-extrabold text-5xl">Poke</span>
+        <span class="text-orange-600 font-extrabold text-5xl">Dex</span>
+      </div>
     </div>
-  }
-</div>
-<div class="flex justify-center">
-  <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[10, 20, 30]" />
+    <div class="flex flex-row items-center gap-0.5">
+      <input type="text" pInputText [(ngModel)]="nome"/>
+      <p-button icon="pi pi-search" severity="secondary" rounded="true"/>
+    </div>
+  </section>
+  <!-- Body -->
+  <section class="grid grid-cols-10 gap-10">
+    @for (item of list; track item){
+      <div class="flex flex-col items-center justify-between gap-0.5">
+        <span class="text-amber-600 text-sm">{{item.name.charAt(0).toUpperCase()+item.name.slice(1)}}</span>
+        <p-image src="{{item.sprites.front_default}}"></p-image>
+        @for (type of item.types; track type){
+          <span class="text-amber-300 text-sm">{{type.type.name.charAt(0).toUpperCase()+type.type.name.slice(1)}}</span>
+        }
+        <p-button (onClick)="playAudio(item.cries.latest)" icon="pi pi-volume-up" [rounded]="true" [text]="true" severity="danger"></p-button>
+      </div>
+    }
+  </section>
+  <!-- Footer -->
+  <section class="flex flex-col justify-center">
+    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[30, 60, 90]"/>
+  </section>
 </div>
