@@ -18,9 +18,23 @@ export class AppComponent implements OnInit {
   rows: number = 30;
   totalRecords: number = 0;
   nome:string = ''
+  cache: any = []
+
+  onKey() {
+    this.list = this.cache
+    let lista:any[] = []
+    this.list.forEach(item => {
+      if(item.name.toLowerCase().includes(this.nome.toLowerCase())) {
+        lista.push(item)
+      }
+    })
+    this.list = []
+    this.list = lista;
+    console.log(this.list.length);
+  }
 
   ngOnInit() {
-    this.fetchAll()
+    this.fetchAll(0, 10000)
   }
 
   onPageChange(event: PaginatorState) {
@@ -41,6 +55,7 @@ export class AppComponent implements OnInit {
   fetchOne(url:any){
     fetch(url).then(res => res.json()).then((data) => {
       this.list.push(data);
+      this.cache.push(data);
     })
   }
 
